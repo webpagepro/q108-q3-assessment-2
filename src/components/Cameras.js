@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Camera from './Camera'
-import { Row, Col, Input } from 'reactstrap'
+import {Col, Input } from 'reactstrap'
 
 class Cameras extends Component {
     state={
