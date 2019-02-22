@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TopNavBar from './components/TopNavBar'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import CartList from './components/CartList'
 import Cameras from './components/Cameras'
 import { Container, Row, Col } from 'reactstrap'
 /*router.get('/cameras', cameras.getAll)
@@ -15,7 +16,9 @@ router.delete('/cameras/:id', cameras.deleteBook)
 class App extends Component {
 
 state = {
-  cameras: []
+  cameras: [],
+  isLoading:true,
+  error: null
 }
 
 componentDidMount = async () => {
@@ -26,7 +29,7 @@ componentDidMount = async () => {
     }
     const cameras = await res.json()
       this.setState({
-        cameras: cameras,
+        cameras: cameras
       }) 
        console.log("App DidMount", cameras)
 
@@ -36,16 +39,49 @@ componentDidMount = async () => {
     this.setState({ error: true })
   }
 }
+
+addCameraToCart = (id) => { 
+  console.log("FETCH", `http://localhost:8000/cameras/${id}`)
+ return fetch(`http://localhost:8000/cameras/${id}`,
+  {
+    method: "PATCH",
+    body: JSON.stringify({ 
+      inCart: true
+     }),
+    headers: {
+        "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    this.setState(prevState => {
+      return {
+        cameras: [
+          ...prevState.cameras,
+        ]
+      };
+    });
+  });
+};
+
   render() {
     console.log("App ", this.state.cameras)
+    let cartItems = this.state.cameras.filter(camera => camera.inCart == true)
+
+    console.log("cartItems", cartItems)
 
     return (
      
       <Container>
       <Header/>
       <TopNavBar/>
-      <Col>
-     <Cameras cameras={this.state.cameras} /> 
+      <Col className="left-column">
+     <Cameras cameras={this.state.cameras.filter(camera => camera.inCart != true)} /> 
+     </Col>
+     <Col className="right-column">
+       <CartList cartItems={this.state.cameras.filter(camera => camera.inCart != false)}
+                  addCameraToCart={this.addCameraToCart}
+                   />
      </Col>
      <Footer />
       </Container>

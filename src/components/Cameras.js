@@ -14,22 +14,27 @@ class Cameras extends Component {
         })
         console.log("Cameras - onChange", name, value)
     }
-    
+
     render() {
-        console.log("Cameras ", this.props.cameras)
-        let camerasList = this.props.cameras.map(camera =>
-            <Camera key={camera.id}
-                camera={camera}
-            />
+        let camerasList = this.props.cameras
+        .filter(camera => camera.name.includes(this.state.filtered)
+        || camera.name.toUpperCase().includes(this.state.filtered)
+        || camera.name.toLowerCase().includes(this.state.filtered)
         )
+        .map(camera => <Camera key={camera.id} camera={camera}
+        
+        />)
+
+    
+
         return (
             <div>
-          <Input
+          <Input className="filter"
             name="filtered"
             onChange={this._onChangeFilter}
             value={this.state.filtered}
           />
-                <Row>
+                <Row className="row-left-column">
                     
                     {camerasList}
                 </Row>
