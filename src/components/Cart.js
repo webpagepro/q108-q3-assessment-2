@@ -7,9 +7,9 @@ class Cart extends Component {
             <div>
 
 <Card style={{ width: "100%", height: "100%", borderStyle: "none" }} className="card-cart">
-
+<CardTitle className="title-cart">Camera Name: {this.props.camera.name}</CardTitle>
 <CardBody className="body-cart">
-    <CardTitle className="title-cart">Camera Name: {this.props.camera.name}</CardTitle>
+    
      <i
                     className="fa fa-trash-o"
                     ></i>

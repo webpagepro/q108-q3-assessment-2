@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardTitle, CardBody, Button } from 'reactstrap'
 
 class Camera extends Component {
+
+    _onClickAddToCart = () =>{
+        alert("Add To Cart Button")
+    }
     render() {
+
+       
         return (
             <div>
 
@@ -15,7 +21,7 @@ class Camera extends Component {
                         <CardText className="price">Price:&nbsp;${this.props.camera.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</CardText>
                         <CardText className="rating">Rating:&nbsp;{this.props.camera.rating} of 4 stars</CardText>
                         <CardTitle className="onSale">{`${this.props.camera.onSale ? '***On Sale***' : ''}`}</CardTitle>
-                        <Button>Add To Cart {this.props.camera.id}</Button>
+                        <Button onClick={this._onClickAddToCart}>Add To Cart {this.props.camera.id}</Button>
                     </CardBody>
 
                 </Card>

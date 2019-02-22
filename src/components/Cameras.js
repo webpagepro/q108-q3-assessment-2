@@ -33,11 +33,13 @@ class Cameras extends Component {
             name="filtered"
             onChange={this._onChangeFilter}
             value={this.state.filtered}
+            placeholder="Filter what you're looking for here"
           />
-                <Row className="row-left-column">
+           <Col className="left-column">
+            
                     
                     {camerasList}
-                </Row>
+                </Col>
                 
             </div>
         );

@@ -57,7 +57,7 @@ addCameraToCart = (id) => {
     this.setState(prevState => {
       return {
         cameras: [
-          ...prevState.cameras,
+          ...prevState, this.state.cameras
         ]
       };
     });
@@ -75,15 +75,15 @@ addCameraToCart = (id) => {
       <Container>
       <Header/>
       <TopNavBar/>
-      <Col className="left-column">
+     <Row>
      <Cameras cameras={this.state.cameras.filter(camera => camera.inCart != true)} /> 
-     </Col>
-     <Col className="right-column">
+    
+    
        <CartList cartItems={this.state.cameras.filter(camera => camera.inCart != false)}
                   addCameraToCart={this.addCameraToCart}
                    />
-     </Col>
-     <Footer />
+         </Row>              
+          <Footer />
       </Container>
     );
   }
