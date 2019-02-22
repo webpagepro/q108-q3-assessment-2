@@ -17,69 +17,69 @@ router.delete('/cameras/:id', cameras.deleteBook)
 
 class App extends Component {
 
-state = {
-  cameras: [],
-  isLoading:true,
-  error: null
-}
+  state = {
+    cameras: [],
+    isLoading: true,
+    error: null
+  }
 
-componentDidMount = async () => {
-  try {
-    const res = await fetch('http://localhost:8000/cameras')
-    if (!res.ok) {
-      throw new Error('API request failed.')
-    }
-    const cameras = await res.json()
+  componentDidMount = async () => {
+    try {
+      const res = await fetch('http://localhost:8000/cameras')
+      if (!res.ok) {
+        throw new Error('API request failed.')
+      }
+      const cameras = await res.json()
       this.setState({
         cameras: cameras
-      }) 
-       console.log("App DidMount", cameras)
+      })
+      console.log("App DidMount", cameras)
 
+    }
+
+    catch (error) {
+      this.setState({ error: true })
+    }
   }
 
-  catch (error) {
-    this.setState({ error: true })
-  }
-}
 
-
-addCameraToCart = id => {
-  console.log("ADD", `http:/localhost:8000/cameras/${id}`)
-  axios.patch(`http://localhost:8000/cameras/${id}`, {
-    inCart: true
-  })
-    .then(res => {
-      this.setState(prevState => {
-        return {
-          cameras: prevState.cameras.map(camera => {
+  addCameraToCart = id => {
+    axios.patch(`http://localhost:8000/cameras/${id}`, {
+      //object key and new value  
+      inCart: true
+    })
+      .then(res => {
+        this.setState({
+          cameras: this.state.cameras.map(camera => {
             if (camera.id == id) {
               camera.inCart = true
             }
             return camera
-          })
-        }
-      })
-    })
-}
 
-removeCameraFromCart = id => {
-  console.log("REMOVE", `http:/localhost:8000/cameras/${id}`)
-  axios.patch(`http://localhost:8000/cameras/${id}`, {
-    inCart: false
-  })
-    .then(res => {
-      this.setState(prevState => {
-        return {
-          cameras: prevState.cameras.map(camera => {
+          })
+
+        })
+      })
+  }
+
+  removeCameraFromCart = id => {
+    axios.patch(`http://localhost:8000/cameras/${id}`, {
+      //object key and new value  
+      inCart: false
+    })
+      .then(res => {
+        this.setState({
+          cameras: this.state.cameras.map(camera => {
             if (camera.id == id) {
               camera.inCart = false
             }
             return camera
           })
-        }
+
+        })
       })
-    })
-}
+  }
+
 
   render() {
     console.log("App ", this.state.cameras)
@@ -88,21 +88,21 @@ removeCameraFromCart = id => {
     console.log("cartItems", cartItems)
 
     return (
-     
+
       <Container>
-      <Header/>
-      <TopNavBar/>
-     <Row>
-     <Cameras cameras={this.state.cameras} 
-        addCameraToCart={this.addCameraToCart}
-     /> 
-    
-    
-       <CartList cartItems={this.state.cameras.filter(camera => camera.inCart != false)}
-           removeCameraFromCart={this.removeCameraFromCart}      
-                   />
-         </Row>              
-          <Footer />
+        <Header />
+        <TopNavBar />
+        <Row>
+          <Cameras cameras={this.state.cameras}
+            addCameraToCart={this.addCameraToCart}
+          />
+
+
+          <CartList cartItems={this.state.cameras.filter(camera => camera.inCart != false)}
+            removeCameraFromCart={this.removeCameraFromCart}
+          />
+        </Row>
+        <Footer />
       </Container>
     );
   }

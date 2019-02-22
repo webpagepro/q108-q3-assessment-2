@@ -26,18 +26,13 @@ img{
   font-size:22px;
 }
 
-
-.card-body{
-
-}
-
-input.form-control.filter, input[type="input"]{
+ input.form-control.filter {
   border-top:none;
   border-left:none;
   border-right:none;
   border-bottom-color:#ccc;
   border-radius:0;
-  margin-left:40px;
+  min-width:350px;
 }
 
 .btn.btn-secondary{
@@ -63,7 +58,7 @@ input.form-control.filter, input[type="input"]{
   font-weight:bold;
   font-size:20px;
   position:relative;
-  top:10px;
+  top:-40px;
   margin-right:100px;
 }
 
@@ -72,10 +67,11 @@ input.form-control.filter, input[type="input"]{
 position:relative;
 padding:12px;
 min-height:100%;
-margin-left:2%;
+right:-95px;
 border-radius:7px;
-width:379px;
-right:-70px;
+float:right;
+width:400px;
+
 }
 
 .card-body.cart-item{
@@ -114,12 +110,12 @@ height:110px;
 }
 
 .left-column.col{
-  width:100%;
+  width:580px;
 }
 
 .right-column.col{
   width:100%;
-  padding-left:20px;
+  padding-left:0px;
 }
 
 .container{
@@ -134,8 +130,8 @@ width:100%;
     padding-left:2px;
   }
   .basket-container.card{
-right:-25px;
 margin-top:40px;
+width:400px;
   }
   .onSale{
     margin-right:20px;
@@ -146,6 +142,7 @@ margin-top:40px;
   .basket-container.card{
     margin-top:40px;
     margin-bottom:60px;
+    margin-left:2%;
       }
 }
 
@@ -166,7 +163,7 @@ margin-top:40px;
   font-size: 20px;
   width: 100%;
   padding: 10px;
-  border-top:1px solid #ccc;
+  
   border-radius:2px;
   margin-bottom:20px;
 }
@@ -209,6 +206,7 @@ margin-right:25px;
 z-index:1;
 color:#000;
 }
+
 .header-links2 a, span.components{
   float:right;
   position:relative;
@@ -218,3 +216,12 @@ color:#000;
   color:#000;
   }
 
+  .filter-container{
+    margin-left:30px;
+    width:460px;
+    margin-bottom:40px;
+    margin-right:50px;
+  }
+.card{
+  margin-bottom:1px;
+}

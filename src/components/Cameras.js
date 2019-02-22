@@ -29,12 +29,14 @@ class Cameras extends Component {
 
         return (
             <div>
+            <div className="filter-container">
           <Input className="filter"
             name="filtered"
             onChange={this._onChangeFilter}
             value={this.state.filtered}
             placeholder="Filter what you're looking for here"
           />
+          </div>
            <Col className="left-column">
             
                     

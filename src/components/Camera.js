@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardTitle, CardBody, Button } from 'reactstrap'
+//import ReactStars from 'react-stars'
+//import React from 'react'
+//import { render } from 'react-dom'
 
 class Camera extends Component {
 
@@ -9,6 +12,10 @@ class Camera extends Component {
        this.props.addCameraToCart(this.props.camera.id)
     }
 
+     ratingChanged = (newRating) => {
+        console.log(newRating)
+      }
+       
     render() {
 
        
