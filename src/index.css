@@ -20,6 +20,7 @@ img{
 
 .card-title.title{
   font-size:28px;
+  padding-left:20px;
 }
 
 .card-text.price{
@@ -58,7 +59,7 @@ img{
   font-weight:bold;
   font-size:20px;
   position:relative;
-  top:-40px;
+  top:-50px;
   margin-right:100px;
 }
 
