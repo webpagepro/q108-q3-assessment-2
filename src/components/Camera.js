@@ -8,6 +8,7 @@ class Camera extends Component {
         e.preventDefault();
        this.props.addCameraToCart(this.props.camera.id)
     }
+
     render() {
 
        
@@ -19,7 +20,7 @@ class Camera extends Component {
                         <CardTitle className="title">Camera Name: {this.props.camera.name}</CardTitle>
                         <CardImg src={this.props.camera.picture} alt={this.props.camera.name} />
                         <CardText className="price">Price:&nbsp;${this.props.camera.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</CardText>
-                        <CardText className="rating">Rating:&nbsp;{this.props.camera.rating} of 4 stars</CardText>
+                        <CardText className="rating">Rating:&nbsp;{this.props.camera.rating} out of 4</CardText>
                         <CardTitle className="onSale">{`${this.props.camera.onSale ? '***On Sale***' : ''}`}</CardTitle>
                         <Button onClick={this._onClickAddToCart}>Add To Cart {this.props.camera.id}</Button>
                     </CardBody>

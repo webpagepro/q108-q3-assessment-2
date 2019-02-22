@@ -63,7 +63,8 @@ input.form-control.filter, input[type="input"]{
   font-weight:bold;
   font-size:20px;
   position:relative;
-  top:20px;
+  top:10px;
+  margin-right:100px;
 }
 
 .basket-container.card{
@@ -84,14 +85,17 @@ height:110px;
 
 
 .card-title.title-cart{
-  font-size:20px;
+  font-size:24px;
   width:80%;
+  color:#3c3c3c;
 }
 
 .fa{
   float:right;
   position:relative;
   top:-30px;
+  width:20px;
+  font-size:18px;
 }
 
 .body-cart.card-body{
@@ -128,12 +132,21 @@ height:110px;
   .right-column.col{
 width:100%;
     padding-left:2px;
-
   }
   .basket-container.card{
 right:-25px;
+margin-top:40px;
   }
+  .onSale{
+    margin-right:20px;
+  }
+}
 
+@media (max-width: 960px){
+  .basket-container.card{
+    margin-top:40px;
+    margin-bottom:60px;
+      }
 }
 
 .totals{
@@ -152,7 +165,7 @@ right:-25px;
 .card-title.title-cart {
   font-size: 20px;
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border-top:1px solid #ccc;
   border-radius:2px;
   margin-bottom:20px;
@@ -171,6 +184,37 @@ color:#fff;
 margin-left:20px;
 }
 
-.navbar .navbar-dark .bg-dark{
-  height:120px;
+.navbar{
+  height:80px;
+  border-radius:4px;
+  box-shadow: 3px 3px 3px #cccccc;
 }
+
+.bg-dark {
+  height: 100px;
+  border-radius:4px;
+  margin-top:60px;
+}
+
+.cartTitle{
+  color:#000;
+  font-size:24px;
+}
+
+.header-links a, span.github{
+float:right;
+position:relative;
+top:-65px;
+margin-right:25px;
+z-index:1;
+color:#000;
+}
+.header-links2 a, span.components{
+  float:right;
+  position:relative;
+  top:-65px;
+  margin-right:15px;
+  z-index:1;
+  color:#000;
+  }
+

@@ -18,8 +18,8 @@ class Cameras extends Component {
     render() {
         let camerasList = this.props.cameras
         .filter(camera => camera.name.includes(this.state.filtered)
-      //  || camera.name.toUpperCase().includes(this.state.filtered)
-       // || camera.name.toLowerCase().includes(this.state.filtered)
+        || camera.name.toUpperCase().includes(this.state.filtered)
+        || camera.name.toLowerCase().includes(this.state.filtered)
         )
         .map(camera => <Camera key={camera.id} camera={camera}
         addCameraToCart={this.props.addCameraToCart}

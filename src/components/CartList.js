@@ -6,7 +6,7 @@ class CartList extends Component {
     render() {
        let cartedCameras = this.props.cartItems.map(camera => 
         <Cart key={camera.id}  camera={camera}
-        addCameraToCart={this.props.addCameraToCart}
+         removeCameraFromCart={this.props.removeCameraFromCart}
         />
        )
        return(
