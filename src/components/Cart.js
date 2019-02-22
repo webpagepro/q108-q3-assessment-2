@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardTitle, CardBody, Button } from 'reactstrap'
 
 class Cart extends Component {
+
+
+    
     render() {
         return (
             <div>
