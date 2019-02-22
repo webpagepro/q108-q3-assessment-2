@@ -3,16 +3,16 @@ import { Card, CardImg, CardText, CardTitle, CardBody, Button } from 'reactstrap
 
 class Camera extends Component {
 
-    _onClickAddToCart = () =>{
-        alert("Add To Cart Button")
+    _onClickAddToCart = (e) =>{
+        //alert("Add To Cart Button")
+        e.preventDefault();
+       this.props.addCameraToCart(this.props.camera.id)
     }
     render() {
 
        
         return (
-            <div>
-
-
+          
                 <Card style={{ width: "100%", height: "100%", borderStyle: "none" }}>
 
                     <CardBody>
@@ -26,7 +26,6 @@ class Camera extends Component {
 
                 </Card>
 
-            </div>
         );
     }
 }
