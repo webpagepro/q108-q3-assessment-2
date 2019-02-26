@@ -28,7 +28,7 @@ class Camera extends Component {
                         count={this.props.camera.rating}
                         size={24}
                         color2={'#ffd700'} /></CardText>
-                    <CardTitle className="onSale">{`${this.props.camera.onSale ? '***On Sale***' : ''}`}</CardTitle>
+                    <CardTitle className="onSale">{`${this.props.camera.onSale ? '*** On SALE ***' : ''}`}</CardTitle>
                     <Button onClick={this._onClickAddToCart}>Add To Cart</Button>
                 </CardBody>
 
