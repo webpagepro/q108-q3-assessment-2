@@ -16,6 +16,9 @@ class Cameras extends Component {
     }
 
     render() {
+        console.log("List ", this)
+
+
         let camerasList = this.props.cameras
         .filter(camera => camera.name.includes(this.state.filtered.charAt(0).toUpperCase()))
         .map(camera => <Camera key={camera.id} camera={camera}

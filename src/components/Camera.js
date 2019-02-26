@@ -18,13 +18,13 @@ class Camera extends Component {
 
 
         return (
-
+<div>
             <Card style={{ width: "100%", height: "100%", borderStyle: "none" }}>
                     <CardBody>
                     <CardTitle className="title">Camera Name: {this.props.camera.name}</CardTitle>
                     <CardImg src={this.props.camera.picture} alt={this.props.camera.name} />
                     <CardText className="price">Price:&nbsp;${this.props.camera.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</CardText>
-                    <CardText className="rating">Ratings:<ReactStars
+                    <CardText className="rating">Rating<ReactStars
                         count={this.props.camera.rating}
                         size={24}
                         color2={'#ffd700'} /></CardText>
@@ -33,7 +33,7 @@ class Camera extends Component {
                 </CardBody>
 
             </Card>
-
+</div>
         );
     }
 }

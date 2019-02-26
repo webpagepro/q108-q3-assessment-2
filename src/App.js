@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import CartList from './components/CartList'
 import Cameras from './components/Cameras'
 import { Container, Row, Col } from 'reactstrap'
-import axios from 'axios'
+//import axios from 'axios'
 
 /*router.get('/cameras', cameras.getAll)
 router.get('/cameras/:id', cameras.getOne)
@@ -42,68 +42,125 @@ class App extends Component {
     }
   }
 
-
-  addCameraToCart = id => {
-    axios.patch(`http://localhost:8000/cameras/${id}`, {
-      //object key and new value  
-      inCart: true
-    })
-      .then(res => {
-        this.setState({
-          cameras: this.state.cameras.map(camera => {
-            if (camera.id == id) {
-              camera.inCart = true
-            }
-            return camera
-
-          })
-
+  // FETCH ADD CAMERA TO CART FUNCTION
+  addCameraToCart = (id) => {
+    return fetch(`http://localhost:8000/cameras/${id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          inCart: true
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(json => {
+        this.setState(prevState => {
+          return {
+            cameras: prevState.cameras.map(camera => {
+              if (camera.id == id) {
+                camera.inCart = true
+              }
+              return camera
+            })
+          }
         })
       })
   }
 
-  removeCameraFromCart = id => {
-    axios.patch(`http://localhost:8000/cameras/${id}`, {
-      //object key and new value  
-      inCart: false
-    })
-      .then(res => {
-        this.setState({
-          cameras: this.state.cameras.map(camera => {
-            if (camera.id == id) {
-              camera.inCart = false
-            }
-            return camera
-          })
+  // FETCH REMOVE CAMERA FROM CART FUNCTION
+  removeCameraFromCart = (id) => {
+    return fetch(`http://localhost:8000/cameras/${id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          inCart: false
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(json => {
+        this.setState(prevState => {
+          return {
+            cameras: prevState.cameras.map(camera => {
+              if (camera.id == id) {
+                camera.inCart = false
+              }
+              return camera
+            })
+          }
 
         })
       })
   }
-
+  /**************** AXIOS  ADD and REMOVE CAMERA FUNCTIONS  ***************
+   addCameraToCart = id => {
+      console.log("ADD", `http:/localhost:8000/cameras/${id}`)
+      axios.patch(`http://localhost:8000/cameras/${id}`, {
+        //object key and new value  
+        inCart: true
+      })
+        .then(res => {
+          this.setState({
+            cameras: this.state.cameras.map(camera => {
+              if (camera.id == id) {
+                camera.inCart = true
+              }
+              return camera
+  
+            })
+  
+          })
+        })
+    }
+  
+    removeCameraFromCart = id => {
+      axios.patch(`http://localhost:8000/cameras/${id}`, {
+        //object key and new value  
+        inCart: false
+      })
+        .then(res => {
+          this.setState(prevState => {
+           return{
+  
+            cameras: prevState.cameras.map(camera => {
+              if (camera.id == id) {
+                camera.inCart = false
+              }
+              return camera;
+            })
+          }
+          })
+        })
+          }
+  *************************************************************/
 
   render() {
     console.log("App ", this.state.cameras)
     let cartItems = this.state.cameras.filter(camera => camera.inCart == true)
 
-    console.log("cartItems", cartItems)
+    //console.log("cartItems", cartItems)
 
     return (
+      <div>
+        <Container>
+          <Header />
+          <TopNavBar />
+          <Row>
+            <Cameras cameras={this.state.cameras}
+              addCameraToCart={this.addCameraToCart}
+            />
 
-      <Container>
-        <Header />
-        <TopNavBar />
-        <Row>
-          <Cameras cameras={this.state.cameras}
-            addCameraToCart={this.addCameraToCart}
-          />
-
-
-          <CartList cartItems={this.state.cameras.filter(camera => camera.inCart != false)}
-            removeCameraFromCart={this.removeCameraFromCart}
-          />
-        </Row>
-        <Footer />
-      </Container>
+            <CartList cartItems={cartItems}
+              removeCameraFromCart={this.removeCameraFromCart}
+            />
+          </Row>
+          <Footer />
+        </Container>
+      </div>
     );
   }
 }
